@@ -57,8 +57,8 @@ This section details the chronological order of installation attempts, the speci
     ... a lot of Upgrading
     ```
     *Outcome:* Homebrew updated successfully.
-
-2.  **Locale Configuration for ROS2:**
+    
+3.  **Locale Configuration for ROS2:**
     ```bash
     amirsohly@Amirrezas-MacBook-Air ~ % echo "export LC_ALL=en_US.UTF-8" >> ~/.zshrc
     amirsohly@Amirrezas-MacBook-Air ~ % echo "export LANG=en_US.UTF-8" >> ~/.zshrc
@@ -66,7 +66,7 @@ This section details the chronological order of installation attempts, the speci
     ```
     *Outcome:* Locales configured.
 
-3.  **Tapping `ros/ros` Homebrew Repository:**
+4.  **Tapping `ros/ros` Homebrew Repository:**
     ```bash
     amirsohly@Amirrezas-MacBook-Air ~ % brew tap ros/ros
     ==> Tapping ros/ros
@@ -103,7 +103,7 @@ This section details the chronological order of installation attempts, the speci
         ```
     *Outcome:* Authentication issue persisted and shifted to "Repository not found," suggesting `ros/homebrew-ros` might not be the correct tap or had visibility issues, or there was a deeper Git configuration problem.
 
-4.  **Installing `ros-humble-desktop` & `gz-garden`:**
+5.  **Installing `ros-humble-desktop` & `gz-garden`:**
     *These commands were not fully attempted at this point due to the `brew tap` failures.*
 
 ---
@@ -161,7 +161,7 @@ This section details the chronological order of installation attempts, the speci
 4.  **Colcon Build & Persistent CMake Issue:**
     ```bash
     (venv) amirsohly@Amirrezas-MacBook-Air agv_project_ws % colcon build --symlink-install
-    # ... (initial output)
+    # ...
     --- stderr: fastcdr
     CMake Error at CMakeLists.txt:18 (cmake_minimum_required):
       Compatibility with CMake < 3.5 has been removed from CMake.
