@@ -1,4 +1,3 @@
-## Automated-Guided-Vehicle-AGV-Using-ROS2-and-Gazebo
 # Industrial AGV Simulation Project: Environment Setup & Troubleshooting on macOS (Apple Silicon)
 
 ## Project Overview
