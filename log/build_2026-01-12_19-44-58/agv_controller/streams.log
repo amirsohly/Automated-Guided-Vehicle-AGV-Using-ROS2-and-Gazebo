@@ -1,0 +1,22 @@
+[0.998s] Invoking command in '/home/ubuntu/agv_project/src/agv_controller': PYTHONPATH=/home/ubuntu/agv_project/build/agv_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/agv_project/install/agv_controller/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/agv_controller build --build-base /home/ubuntu/agv_project/build/agv_controller/build install --record /home/ubuntu/agv_project/build/agv_controller/install.log --single-version-externally-managed install_data
+[1.256s] running egg_info
+[1.275s] writing ../../build/agv_controller/agv_controller.egg-info/PKG-INFO
+[1.275s] writing dependency_links to ../../build/agv_controller/agv_controller.egg-info/dependency_links.txt
+[1.276s] writing entry points to ../../build/agv_controller/agv_controller.egg-info/entry_points.txt
+[1.276s] writing requirements to ../../build/agv_controller/agv_controller.egg-info/requires.txt
+[1.276s] writing top-level names to ../../build/agv_controller/agv_controller.egg-info/top_level.txt
+[1.316s] reading manifest file '../../build/agv_controller/agv_controller.egg-info/SOURCES.txt'
+[1.316s] writing manifest file '../../build/agv_controller/agv_controller.egg-info/SOURCES.txt'
+[1.317s] running build
+[1.317s] running build_py
+[1.317s] running install
+[1.323s] running install_lib
+[1.343s] running install_data
+[1.343s] running install_egg_info
+[1.364s] removing '/home/ubuntu/agv_project/install/agv_controller/lib/python3.12/site-packages/agv_controller-0.0.0-py3.12.egg-info' (and everything under it)
+[1.364s] Copying ../../build/agv_controller/agv_controller.egg-info to /home/ubuntu/agv_project/install/agv_controller/lib/python3.12/site-packages/agv_controller-0.0.0-py3.12.egg-info
+[1.365s] running install_scripts
+[1.506s] Installing agv_motion script to /home/ubuntu/agv_project/install/agv_controller/lib/agv_controller
+[1.506s] Installing keyboard_controller script to /home/ubuntu/agv_project/install/agv_controller/lib/agv_controller
+[1.506s] writing list of installed files to '/home/ubuntu/agv_project/build/agv_controller/install.log'
+[1.532s] Invoked command in '/home/ubuntu/agv_project/src/agv_controller' returned '0': PYTHONPATH=/home/ubuntu/agv_project/build/agv_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/agv_project/install/agv_controller/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/agv_controller build --build-base /home/ubuntu/agv_project/build/agv_controller/build install --record /home/ubuntu/agv_project/build/agv_controller/install.log --single-version-externally-managed install_data

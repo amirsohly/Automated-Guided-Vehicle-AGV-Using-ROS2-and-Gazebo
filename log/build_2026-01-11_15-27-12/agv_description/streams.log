@@ -1,0 +1,19 @@
+[0.674s] Invoking command in '/home/ubuntu/agv_project/src/agv_description': PYTHONPATH=/home/ubuntu/agv_project/build/agv_description/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/agv_project/install/agv_description/lib/python3.12/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/agv_description build --build-base /home/ubuntu/agv_project/build/agv_description/build install --record /home/ubuntu/agv_project/build/agv_description/install.log --single-version-externally-managed install_data
+[0.834s] running egg_info
+[0.841s] writing ../../build/agv_description/agv_description.egg-info/PKG-INFO
+[0.841s] writing dependency_links to ../../build/agv_description/agv_description.egg-info/dependency_links.txt
+[0.842s] writing requirements to ../../build/agv_description/agv_description.egg-info/requires.txt
+[0.842s] writing top-level names to ../../build/agv_description/agv_description.egg-info/top_level.txt
+[0.858s] reading manifest file '../../build/agv_description/agv_description.egg-info/SOURCES.txt'
+[0.858s] writing manifest file '../../build/agv_description/agv_description.egg-info/SOURCES.txt'
+[0.859s] running build
+[0.859s] running build_py
+[0.859s] running install
+[0.865s] running install_lib
+[0.873s] running install_data
+[0.873s] running install_egg_info
+[0.883s] removing '/home/ubuntu/agv_project/install/agv_description/lib/python3.12/site-packages/agv_description-0.0.0-py3.12.egg-info' (and everything under it)
+[0.883s] Copying ../../build/agv_description/agv_description.egg-info to /home/ubuntu/agv_project/install/agv_description/lib/python3.12/site-packages/agv_description-0.0.0-py3.12.egg-info
+[0.884s] running install_scripts
+[0.956s] writing list of installed files to '/home/ubuntu/agv_project/build/agv_description/install.log'
+[0.987s] Invoked command in '/home/ubuntu/agv_project/src/agv_description' returned '0': PYTHONPATH=/home/ubuntu/agv_project/build/agv_description/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ubuntu/agv_project/install/agv_description/lib/python3.12/site-packages: /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/agv_description build --build-base /home/ubuntu/agv_project/build/agv_description/build install --record /home/ubuntu/agv_project/build/agv_description/install.log --single-version-externally-managed install_data
