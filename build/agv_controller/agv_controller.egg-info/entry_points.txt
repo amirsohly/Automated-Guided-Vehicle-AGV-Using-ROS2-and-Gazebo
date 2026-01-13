@@ -1,3 +1,0 @@
-[console_scripts]
-agv_motion = agv_controller.agv_motion:main
-keyboard_controller = agv_controller.keyboard_controller:main
