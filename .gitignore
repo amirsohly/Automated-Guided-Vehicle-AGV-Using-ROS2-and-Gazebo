@@ -9,3 +9,9 @@ __pycache__/
 
 # Colcon
 .colcon*
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
