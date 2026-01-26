@@ -10,7 +10,7 @@ setup(
         ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools','numpy'],
     zip_safe=True,
     maintainer='ubuntu',
     maintainer_email='ubuntu@todo.todo',
@@ -20,6 +20,7 @@ setup(
     entry_points={
         'console_scripts': [
             'lidar_node = agv_sensors.lidar_node:main',
+            'camera_node = agv_sensors.camera_node:main',
         ],
     },
 )

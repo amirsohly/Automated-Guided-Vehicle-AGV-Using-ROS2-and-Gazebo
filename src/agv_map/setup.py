@@ -24,6 +24,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'map_node = agv_map.map_node:main',
         ],
     },
 )
