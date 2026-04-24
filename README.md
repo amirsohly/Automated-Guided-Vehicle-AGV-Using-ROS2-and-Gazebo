@@ -30,94 +30,257 @@ This approach follows the course guidance, emphasizing **engineering reasoning o
 
 ---
 
-## Installation Attempts & Troubleshooting Log
+---
+
+# 🚗 Automated Guided Vehicle (AGV) Simulation using ROS 2
+
+This project presents a simplified **Automated Guided Vehicle (AGV)** simulation developed using **ROS 2 (Jazzy)**, designed with an **Industrial Internet of Things (IIoT)** perspective.
+
+The system demonstrates modular robot architecture, real-time communication, and basic sensor simulation, including LIDAR and camera integration.
 
 ---
 
-## Attempt 1: Direct Homebrew Installation of ROS2 & Gazebo
+## 📌 Features
 
-**Objective:**  
-Install ROS2 Humble and Gazebo directly on macOS using Homebrew.
-
-**Outcome:**  
-This attempt failed due to:
-- Authentication and repository access issues with `ros/homebrew-ros`
-- Inconsistent or unavailable ROS2 and Gazebo formulas for Apple Silicon
-- Dependency resolution failures
-
-Despite multiple credential and configuration fixes, the ROS2 Homebrew tap could not be reliably accessed.
-
-**Conclusion:**  
-Homebrew-based installation was deemed unstable and unsuitable for this platform.
+* ✅ ROS 2-based modular architecture
+* ✅ AGV modeling using URDF
+* ✅ Velocity-based control via `/cmd_vel`
+* ✅ Simulated LIDAR sensor (`/scan`)
+* ✅ Simulated camera (`/image`)
+* ✅ Static warehouse map (`/map`)
+* ✅ TF-based coordinate system
+* ✅ Real-time visualization with Foxglove
 
 ---
 
-## Attempt 2: ROS2 Source Compilation on macOS
+## 🏗️ System Architecture
 
-**Objective:**  
-Build ROS2 Humble from source to bypass missing binaries and Homebrew limitations.
+The project is organized into the following ROS 2 packages:
 
-**Key Issues Encountered:**
-- `rclpy` unavailable for Python ≥ 3.13 on ARM64
-- Persistent CMake version conflicts (Homebrew enforcing CMake 4.x)
-- Colcon build failures even when forcing a compatible CMake version
-- Identical failures reproduced across Python 3.13 and Python 3.9 environments
+* **agv_description** → Robot model (URDF)
+* **agv_controller** → Motion control
+* **agv_sensors** → LIDAR & camera simulation
+* **agv_map** → Static occupancy grid map
 
-**Conclusion:**  
-Source compilation on macOS Apple Silicon proved impractical due to deep toolchain incompatibilities.
+Communication is handled through:
 
----
-
-## Attempt 3: Docker-Based ROS2 and Gazebo Environment
-
-**Objective:**  
-Run ROS2 and Gazebo inside Docker containers to isolate the environment from macOS constraints.
-
-**Results:**
-- ROS2 Humble core ran successfully inside Docker
-- Gazebo and Ignition-based simulators were missing or unusable
-- Official images showed platform mismatch warnings (`amd64` vs `arm64`)
-- GUI-based simulators were inaccessible
-
-**Conclusion:**  
-Docker resolved ROS2 runtime issues but failed to provide a reliable Gazebo environment on macOS.
+* **ROS 2 Topics**
+* **DDS middleware**
+* **Publisher / Subscriber model**
 
 ---
 
-## Attempt 4: University VM (Gazebo Working Validation Environment)
+## ⚙️ Technologies Used
 
-**Objective:**  
-Validate the AGV ROS2 stack in a fully supported Linux environment to distinguish platform issues from project-level issues.
-
-**Environment:**
-- **OS:** Ubuntu (x86_64)
-- **ROS 2 Distribution:** Jazzy
-- **Simulation Tool:** Gazebo
-- **Access:** Remote via University VM (Tailscale)
-
-**Results:**
-1. ROS2 sourced correctly
-2. Gazebo launched successfully
-3. AGV URDF model spawned correctly
-4. TF tree published and visualized
-5. Velocity commands on `/cmd_vel` resulted in real simulated motion
-6. Full ROS2–Gazebo integration confirmed
-
-**Conclusion:**  
-The project is **functionally correct**.  
-All previous failures were confirmed to be **platform-specific**, not conceptual or architectural.
+* ROS 2 Jazzy
+* Python (`rclpy`)
+* URDF (Robot modeling)
+* Foxglove Studio (Visualization)
+* DDS (Communication middleware)
 
 ---
 
-## Attempt 5: Remote Docker + Foxglove (Final Working Architecture)
+## 🤖 AGV Model
 
-**Objective:**  
-Provide a fully functional AGV visualization and control setup on macOS **without requiring Gazebo or RViz locally**.
+The robot is defined using URDF and consists of:
 
-**Approach:**
-- ROS2 runs inside a Docker container (Ubuntu 24.04)
-- Visualization handled via Foxglove Studio on macOS
-- Communication via `foxglove_bridge` (WebSocket)
+* `base_link` → Main body
+* `laser_link` → LIDAR sensor
+* `camera_link` → Camera sensor
+
+The robot structure is published via:
+
+```
+/robot_description
+```
+
+---
+
+## 🎮 Control
+
+The AGV is controlled using:
+
+```
+/cmd_vel → geometry_msgs/Twist
+```
+
+Example:
+
+```bash
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist \
+"{linear: {x: 0.5}, angular: {z: 0.2}}"
+```
+
+---
+
+## 📡 Sensors
+
+### 🔹 LIDAR
+
+* Topic: `/scan`
+* Type: `sensor_msgs/LaserScan`
+* Function: Measures distance to obstacles
+
+Example:
+
+```bash
+ros2 topic echo /scan
+```
+
+---
+
+### 🔹 Camera
+
+* Topic: `/image`
+* Type: `sensor_msgs/Image`
+* Function: Simulates forward visual perception
+
+---
+
+## 🗺️ Map
+
+* Topic: `/map`
+* Type: `nav_msgs/OccupancyGrid`
+* Represents a static warehouse environment
+
+---
+
+## 📍 TF (Coordinate Frames)
+
+TF manages spatial relationships between:
+
+* `map`
+* `base_link`
+* `laser_link`
+* `camera_link`
+
+---
+
+## 🌐 IIoT Perspective
+
+This AGV acts as an **edge device**:
+
+* Generates sensor data locally
+* Communicates in real time via ROS 2
+* Can be extended to cloud-based monitoring systems
+
+---
+
+## 🖥️ Visualization (Foxglove)
+
+To visualize the system:
+
+1. Run `foxglove_bridge`
+2. Connect to:
+
+```
+ws://<your-ip>:8765
+```
+
+Visualize:
+
+* TF tree
+* LIDAR scan
+* Camera feed
+* Map
+
+---
+
+## ▶️ How to Run
+
+### 1. Setup
+
+```bash
+source /opt/ros/jazzy/setup.bash
+cd ~/agv_project
+colcon build
+source install/setup.bash
+```
+
+---
+
+### 2. Run core nodes (separate terminals)
+
+**Terminal 1**
+
+```bash
+ros2 run robot_state_publisher robot_state_publisher \
+src/agv_description/urdf/agv.urdf
+```
+
+**Terminal 2**
+
+```bash
+ros2 run agv_controller <controller_node>
+```
+
+**Terminal 3**
+
+```bash
+ros2 run agv_sensors lidar_node
+```
+
+**Terminal 4**
+
+```bash
+ros2 run agv_sensors camera_node
+```
+
+**Terminal 5**
+
+```bash
+ros2 run agv_map map_node
+```
+
+---
+
+### 3. Move the AGV
+
+```bash
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist \
+"{linear: {x: 0.5}, angular: {z: 0.0}}"
+```
+
+---
+
+## 📊 Key Topics
+
+| Topic      | Description           |
+| ---------- | --------------------- |
+| `/cmd_vel` | Velocity control      |
+| `/scan`    | LIDAR data            |
+| `/image`   | Camera data           |
+| `/tf`      | Coordinate transforms |
+| `/map`     | Environment map       |
+
+---
+
+## ⚠️ Notes
+
+* This project uses **kinematic simulation** (no physics engine like Gazebo)
+* Movement is represented through **TF updates**, not physical displacement
+* Sensors are **logical simulations**, not physics-based
+
+---
+
+## 🚀 Future Work
+
+* Obstacle avoidance using LIDAR
+* Autonomous navigation
+* Integration with cloud (MQTT / Edge computing)
+* Multi-robot coordination
+
+---
+
+## 📄 License
+
+This project is for educational purposes.
+
+---
+
+## 🙌 Acknowledgments
+
+Developed as part of the **Industrial Internet of Things (IIoT)** course at the University of Messina.
 
 ---
 
